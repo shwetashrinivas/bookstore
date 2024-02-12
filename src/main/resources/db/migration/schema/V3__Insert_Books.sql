@@ -1,4 +1,4 @@
-INSERT into books(id, title, author, price, description, coverImageUrl, rating, quanity, createdAt, updatedAt)
+INSERT into books(id, title, author, price, description, cover_image_url, rating, quantity, created_at, updated_at)
 values ('1', 'Tale of two cities', 'Charles Dickens', '350',
         'The novel tells the story of the French Doctor Manette, his 18-year-long imprisonment in the Bastille in Paris, and his release to live in London with his daughter Lucie whom he had never met. The story is set against the conditions that led up to the French Revolution and the Reign of Terror.',
         '1586_f1601742134.png', 5, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
