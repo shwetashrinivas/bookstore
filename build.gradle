@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.2'
 	id 'io.spring.dependency-management' version '1.1.4'
+	id 'com.github.node-gradle.node' version '7.0.1'
 }
 
 group = 'com.idfc.bootcamp'
@@ -27,3 +28,28 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+node {
+	download = true
+	version="18.12.1"
+	npmVersion="9.2.0"
+	workDir = file("${project.projectDir}/src/main/frontend-ui/bookstoreapp/nodejs")
+	npmWorkDir = file("${project.projectDir}/src/main/frontend-ui/bookstoreapp/npm")
+}
+task installFEDependencies(type: YarnTask){
+	description = " read packge.json and install all jars"
+	workingDir = file("${project.projectDir}/src/main/frontend-ui/bookstoreapp")
+	args =["install"]
+}
+task buildFrontend(type: YarnTask, dependsOn: installFEDependencies){
+	description = "Builds applciation for your frontend "
+	workingDir = file("${project.projectDir}/src/main/frontend-ui/bookstoreapp")
+	args =["build"]
+}
+
+task copyFrontendFiles(type: Copy, dependsOn: [buildFrontend, resolveMainClassName]){
+	from "${project.projectDir}/src/main/frontend-ui/bookstoreapp/build/"
+	into "${project.projectDir}/build/resources/main/static"
+}
+
+bootRun.dependsOn copyFrontendFiles
