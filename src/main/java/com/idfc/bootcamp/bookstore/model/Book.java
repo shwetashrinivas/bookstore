@@ -30,10 +30,6 @@ public class Book {
         this.quantity = quantity;
     }
 
-    public Book(String bookName) {
-        this.title = bookName;
-    }
-
     public Long getId() {
         return id;
     }

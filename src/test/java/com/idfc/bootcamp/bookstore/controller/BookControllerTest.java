@@ -34,8 +34,12 @@ public class BookControllerTest {
     @Test
     @DisplayName("should return two books when invoked")
     void shouldReturnTwoBooksWhenInvoked() throws Exception {
-        Book b1 = new Book("acd");
-        Book b2 = new Book("cdf");
+        Book b1 = new Book("Tale of two cities",  "Charles Dickens",  350.0,
+                "The novel tells the story of the French Doctor Manette, his 18-year-long imprisonment in the Bastille in Paris, and his release to live in London with his daughter Lucie whom he had never met. The story is set against the conditions that led up to the French Revolution and the Reign of Terror.",
+                "1586_f1601742134.png", 5.0, 3);
+        Book b2 = new Book("Little women",   "Louisa May Alcott", 450.0,
+                "It is set during and after the Civil War and tells the story of the March family, principally the four girls: Meg, Jo, Beth, and Amy. The girls struggle and grow as a family while their father is serving in the war and learn the value of hard work, self-sacrifice, and love.",
+                "1586_f1601742134.png", 5.0, 4);
 
         when(bookRepository.findAll()).thenReturn(Arrays.asList(b1, b2));
         mockMvc.perform(get("/books"))
@@ -45,12 +49,17 @@ public class BookControllerTest {
     @Test
     @DisplayName("should return titles when the endpoint is invoked")
     void shouldReturnTitlesWhenTheEndpointIsInvoked() throws Exception {
-        Book b1 = new Book("Book1");
-        Book b2 = new Book("Book2");
+        Book b1 = new Book("Tale of two cities",  "Charles Dickens",  350.0,
+                "The novel tells the story of the French Doctor Manette, his 18-year-long imprisonment in the Bastille in Paris, and his release to live in London with his daughter Lucie whom he had never met. The story is set against the conditions that led up to the French Revolution and the Reign of Terror.",
+                "1586_f1601742134.png", 5.0, 3);
+        Book b2 = new Book("Little women",   "Louisa May Alcott", 450.0,
+                "It is set during and after the Civil War and tells the story of the March family, principally the four girls: Meg, Jo, Beth, and Amy. The girls struggle and grow as a family while their father is serving in the war and learn the value of hard work, self-sacrifice, and love.",
+                "1586_f1601742134.png", 5.0, 4);
+
 
         when(bookRepository.findAll()).thenReturn(Arrays.asList(b1, b2));
         mockMvc.perform(get("/books"))
-                .andExpect(jsonPath("$[0].title").value("Book1"))
-                .andExpect(jsonPath("$[1].title").value("Book2"));
+                .andExpect(jsonPath("$[0].title").value("Tale of two cities"))
+                .andExpect(jsonPath("$[1].title").value("Little women"));
     }
 }
