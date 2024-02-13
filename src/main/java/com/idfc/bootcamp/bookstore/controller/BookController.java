@@ -25,7 +25,7 @@ public class BookController {
     public ResponseEntity<?> listBooks() {
         List<Book> books = bookService.getBooks();
         if (books.isEmpty()){
-            return ResponseEntity.status(HttpStatus.OK).body("No data found");
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No data found");
         }
         return ResponseEntity.ok(books);
     }

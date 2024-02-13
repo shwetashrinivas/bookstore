@@ -32,7 +32,7 @@ public class BookControllerTest {
     @Test
     @DisplayName("should return success http status")
     void shouldReturnSuccessHttpStatus() throws Exception {
-        mockMvc.perform(get("/books")).andExpect(status().isOk());
+        mockMvc.perform(get("/books")).andExpect(status().isNoContent());
     }
 
     @Test
@@ -73,7 +73,7 @@ public class BookControllerTest {
         List<Book> emptyList = Collections.emptyList();
         when(bookRepository.findAll()).thenReturn(emptyList);
         mockMvc.perform(get("/books")).
-                andExpect(status().isOk()).
+                andExpect(status().isNoContent()).
                 andExpect(jsonPath("$[0].title").doesNotExist()).
                 andExpect(content().string("No data found"));
     }
