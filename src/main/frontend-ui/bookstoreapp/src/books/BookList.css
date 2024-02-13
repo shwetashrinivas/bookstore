@@ -1,9 +1,5 @@
 .listbooks {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 }
-
-.books {
-    margin-left: 5%;
-}
-  

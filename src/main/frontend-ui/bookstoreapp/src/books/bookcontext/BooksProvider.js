@@ -123,10 +123,11 @@ const BooksProvider = ({ children }) => {
     const getBooks = async () => await axios.get("http://localhost:8090/books");
     getBooks()
       .then(({ data }) => {
-        setBooks([...mockBookList]);
+        console.log("dataaaaa", data);
+        setBooks([...data]);
       })
       .catch(() => {
-        setBooks([...mockBookList]);
+        console.log("Error");
       });
   }, []);
 
