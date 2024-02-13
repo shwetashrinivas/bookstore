@@ -78,5 +78,21 @@ public class BookControllerTest {
                 andExpect(content().string("No data found"));
     }
 
+    @Test
+    @DisplayName("should return matching books for search term")
+    void shouldReturnMatchingBooksForSearchTerm() throws Exception {
+        Book b1 = new Book("Tale of two cities",  "Charles Dickens",  350.0,
+                "The novel tells the story of the French Doctor Manette, his 18-year-long imprisonment in the Bastille in Paris, and his release to live in London with his daughter Lucie whom he had never met. The story is set against the conditions that led up to the French Revolution and the Reign of Terror.",
+                "1586_f1601742134.png", 5.0, 3);
+        Book b2 = new Book("Tale of two cities",  "Charles Dickens",  350.0,
+                "The novel tells the story of the French Doctor Manette, his 18-year-long imprisonment in the Bastille in Paris, and his release to live in London with his daughter Lucie whom he had never met. The story is set against the conditions that led up to the French Revolution and the Reign of Terror.",
+                "1586_f1601742134.png", 5.0, 3);
+        when(bookRepository.findByTitleContainingIgnoreCase("Tale")).thenReturn(Arrays.asList(b1, b2));
+        mockMvc.perform(get("/books/search?searchTerm=Tale"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].title").value("Tale of two cities"))
+                .andExpect(jsonPath("$").isArray());
+    }
+
 
 }

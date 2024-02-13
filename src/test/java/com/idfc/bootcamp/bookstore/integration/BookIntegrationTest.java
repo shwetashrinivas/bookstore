@@ -76,5 +76,4 @@ public class BookIntegrationTest
 
         assertEquals(2,bookList.size());
     }
-
 }

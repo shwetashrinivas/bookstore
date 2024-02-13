@@ -4,6 +4,7 @@ import com.idfc.bootcamp.bookstore.model.Book;
 import com.idfc.bootcamp.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,10 @@ public class BookController {
         return ResponseEntity.ok(books);
     }
 
-
-
+    @GetMapping("books/search")
+    public ResponseEntity<List<Book>> searchProductsByName(@RequestParam String searchTerm) {
+        List<Book> books = bookService.searchProductsByName(searchTerm);
+        return ResponseEntity.ok(books);
+    }
 
 }

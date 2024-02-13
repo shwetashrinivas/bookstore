@@ -10,7 +10,6 @@ import java.util.List;
 @Service
 public class BookService {
 
-    @Autowired
     BookRepository bookRepository;
 
     @Autowired
@@ -19,5 +18,9 @@ public class BookService {
     }
     public List<Book> getBooks() {
         return bookRepository.findAll();
+    }
+
+    public List<Book> searchProductsByName(String searchTerm) {
+        return bookRepository.findByTitleContainingIgnoreCase(searchTerm);
     }
 }
