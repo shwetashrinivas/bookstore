@@ -1,24 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import BooksProvider from "./books/bookcontext/BooksProvider.js";
+import BookList from "./books/BookList.js";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React shweta
-        </a>
-      </header>
-    </div>
+    <BooksProvider>
+      <div className="App">
+        <BookList />
+      </div>
+    </BooksProvider>
   );
 }
 

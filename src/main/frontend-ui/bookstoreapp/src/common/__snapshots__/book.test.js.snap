@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Book should rendering book component 1`] = `
+<div>
+  <div
+    class="book-component"
+    data-testid="book"
+  >
+    <img
+      alt="abc"
+      data-testid="coverImageUrl"
+      height="240"
+      src="https://res.cloudinary.com/www-thepencilapp-com/image/upload/q_auto,f_auto/books/covers/1586_f1601742134.png"
+      width="180"
+    />
+    <p
+      class="title"
+      data-testid="title"
+    >
+      Tale of two cities
+    </p>
+    <p
+      class="author"
+      data-testid="author"
+    >
+      by $
+      Charles Dickens
+    </p>
+    <p
+      class="price"
+      data-testid="price"
+    >
+      RS $
+      350
+    </p>
+  </div>
+</div>
+`;

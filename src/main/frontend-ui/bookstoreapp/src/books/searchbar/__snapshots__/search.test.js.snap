@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`search bar should rendering search bar 1`] = `
+<div>
+  <input
+    data-testid="search-bar"
+  />
+</div>
+`;
