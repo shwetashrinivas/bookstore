@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import "./search.css";
 
-function search() {
-  return <input data-testid="search-bar" />;
+export default function Search() {
+  const [searchValue, setsearchValue] = useState("");
+
+  return (
+    <input
+      placeholder="Search book"
+      data-testid="search-bar"
+      className="input-style"
+    />
+  );
 }
-
-export default search;
