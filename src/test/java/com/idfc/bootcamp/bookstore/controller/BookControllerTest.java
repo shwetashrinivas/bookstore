@@ -2,19 +2,23 @@ package com.idfc.bootcamp.bookstore.controller;
 
 import com.idfc.bootcamp.bookstore.model.Book;
 import com.idfc.bootcamp.bookstore.repository.BookRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest
 public class BookControllerTest {
@@ -62,4 +66,16 @@ public class BookControllerTest {
                 .andExpect(jsonPath("$[0].title").value("Tale of two cities"))
                 .andExpect(jsonPath("$[1].title").value("Little women"));
     }
+
+    @Test
+    @DisplayName("should return no books available when no data is available")
+    void shouldReturnNoBooksAvailableWhenNoDataIsAvailable() throws Exception {
+        List<Book> emptyList = Collections.emptyList();
+        when(bookRepository.findAll()).thenReturn(emptyList);
+        mockMvc.perform(get("/books")).
+                andExpect(status().isOk()).
+                andExpect(jsonPath("$[0].title").doesNotExist()).
+                andExpect(content().string("No data found"));
+    }
+
 }
