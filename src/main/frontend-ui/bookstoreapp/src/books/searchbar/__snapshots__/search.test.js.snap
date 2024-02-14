@@ -3,7 +3,9 @@
 exports[`search bar should rendering search bar 1`] = `
 <div>
   <input
+    class="input-style"
     data-testid="search-bar"
+    placeholder="Search book"
   />
 </div>
 `;

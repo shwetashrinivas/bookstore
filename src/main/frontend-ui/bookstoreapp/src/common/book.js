@@ -6,7 +6,7 @@ export default function Book({ book }) {
     <div className="book-component" data-testid="book">
       <img
         data-testid="coverImageUrl"
-        src="https://res.cloudinary.com/www-thepencilapp-com/image/upload/q_auto,f_auto/books/covers/1586_f1601742134.png"
+        src={`https://res.cloudinary.com/www-thepencilapp-com/image/upload/q_auto,f_auto/books/covers/${book?.coverImageUrl}`}
         alt="abc"
         height={240}
         width={180}

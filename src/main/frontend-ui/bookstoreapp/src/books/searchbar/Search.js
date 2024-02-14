@@ -16,10 +16,11 @@ export default function Search() {
         })
         .then((response) => {
           const { data } = response;
-          console.log("response", data);
           setBooks([...data]);
         })
-        .catch(() => {});
+        .catch(() => {
+          setBooks([]);
+        });
     }, 500);
 
     return () => clearTimeout(getSereachedBooks);

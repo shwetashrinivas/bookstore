@@ -5,6 +5,10 @@ exports[`BookList should rendering book list component 1`] = `
   <div
     class="books"
   >
+    <p>
+      Total books: 
+      2
+    </p>
     <div
       class="listbooks"
       data-testid="list-books"

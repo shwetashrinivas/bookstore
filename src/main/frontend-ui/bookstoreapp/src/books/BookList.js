@@ -5,7 +5,7 @@ import { BooksContext } from "./bookcontext/BooksProvider.js";
 
 export default function BookList() {
   const { books } = useContext(BooksContext);
-  console.log("books", books);
+
   return (
     <div className="books">
       <p>Total books: {books.length}</p>
