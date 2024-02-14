@@ -1,0 +1,33 @@
+.home{
+    font-size: 32px;
+    color: #2286Be;
+    font-family: "copperplate", fantasy;
+    padding: 5px;
+}
+.link{
+    text-decoration: none;
+}
+
+.cart{
+    align-self: center;
+    display: flex;
+}
+
+.nav-main{
+    justify-content: center;
+    display: flex;
+    box-shadow: 0 7px 10px 0 rgba(0,0,0,0.16);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: var(--z-fixed);
+}
+.nav-submain{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}

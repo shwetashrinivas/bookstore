@@ -1,8 +1,13 @@
 .input-style{
+    border: 0;
+    box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
     border-radius: 50px;
     width: 80%;
     height: 50px;
     padding-left: 30px;
     font-weight: 800;
     font-size: medium;
+}
+*:focus {
+    outline: none;
 }

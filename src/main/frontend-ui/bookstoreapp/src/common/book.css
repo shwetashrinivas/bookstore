@@ -4,10 +4,14 @@
     background-color: white;
     border-radius: 10px;
     width: 200px;
-    margin-top: 30px;
+    margin-bottom: 30px;
     margin-right: 30px;
     box-shadow: 1px 0px 19px -3px rgba(0,0,0,0.1);
     cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
 }
 
 .title{
@@ -23,7 +27,18 @@
 }
 
 .price{
-    margin-top: 20px;
     font-size: 16px;
     font-weight: 600;
+}
+.button-style{
+    width: 130px;
+    height: 30px;
+    border-radius: 15px;
+    border: 0;
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: aqua;
+    background-color: #ffe802;
+    line-height: 28px;
 }

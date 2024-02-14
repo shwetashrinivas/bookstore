@@ -1,0 +1,16 @@
+.shopping-cart{
+    padding-top: 90px;
+}
+
+.shopping-cart-header{
+    display: flex;
+    justify-content: space-between;
+}
+.header{
+    font-size: larger;
+    font-weight: 700;
+}
+.cart-summary{
+    display: flex;
+    flex-direction: row;
+}

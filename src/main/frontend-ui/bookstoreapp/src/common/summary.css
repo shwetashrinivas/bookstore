@@ -1,0 +1,15 @@
+.summary{
+    display: flex;
+    flex-direction: column;
+    background: white;
+    box-shadow: 1px 0px 19px -3px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 25px;
+    justify-content: space-around;
+}
+.button{
+    background-color: #ffe802;
+    border-radius: 20px;
+    border: none;
+    height: 30px;
+}

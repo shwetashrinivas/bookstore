@@ -1,5 +1,6 @@
 import React from "react";
 import "./book.css";
+import { Link } from "react-router-dom";
 
 export default function Book({ book }) {
   return (
@@ -20,6 +21,9 @@ export default function Book({ book }) {
       <p className="price" data-testid="price">
         RS ${book?.price}
       </p>
+      <Link data-testid="add-to-card" className="button-style" to="/cart">
+        Add to cart
+      </Link>
     </div>
   );
 }

@@ -14,16 +14,21 @@ const book = {
 };
 
 describe("Book", () => {
-  test("should rendering book component", () => {
+  it("should rendering book component", () => {
     const { container } = render(<Book book={book} />);
     expect(container).toMatchSnapshot();
   });
 
-  test("should have elements title, price, coverImageUrl, author", () => {
+  it("should have elements title, price, coverImageUrl, author", () => {
     render(<Book book={book} />);
     expect(screen.getByTestId("title")).toBeInTheDocument();
     expect(screen.getByTestId("price")).toBeInTheDocument();
     expect(screen.getByTestId("coverImageUrl")).toBeInTheDocument();
     expect(screen.getByTestId("author")).toBeInTheDocument();
+  });
+
+  it("should show add to cart button", () => {
+    render(<Book book={book} />);
+    expect(screen.getByTestId("add-to-card")).toBeInTheDocument();
   });
 });
