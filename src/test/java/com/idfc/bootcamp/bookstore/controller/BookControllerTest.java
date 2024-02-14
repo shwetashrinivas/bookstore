@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -107,6 +108,28 @@ public class BookControllerTest {
                 .andExpect(jsonPath("$[0].title").value("Tale of two cities"))
                 .andExpect(jsonPath("$[1].title").value("bale of 5 cities"))
                 .andExpect(jsonPath("$").isArray());
+    }
+
+    @Test
+    @DisplayName("should return book details when book id is passed")
+    void shouldReturnBookDetailsWhenBookIdIsPassed() throws Exception {
+        Book b1 = new Book("Tale of two cities",  "Charles Dickens",  350.0,
+                "The novel tells the story of the French Doctor Manette, his 18-year-long imprisonment in the Bastille in Paris, and his release to live in London with his daughter Lucie whom he had never met. The story is set against the conditions that led up to the French Revolution and the Reign of Terror.",
+                "1586_f1601742134.png", 5.0, 3);
+        when(bookRepository.findById(4L)).thenReturn(Optional.of(b1));
+        mockMvc.perform(get("/books/details/4"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isNotEmpty());
+    }
+
+    @Test
+    @DisplayName("should return 204 with no book found when invalid id is passed")
+    void shouldReturn204WithNoBookFoundWhenInvalidIdIsPassed() throws Exception {
+        when(bookRepository.findById(4L)).thenReturn(Optional.empty());
+        mockMvc.perform(get("/books/details/12"))
+                .andExpect(status().isNoContent())
+                .andExpect(content().string("No book found"));
+
     }
 
 }
