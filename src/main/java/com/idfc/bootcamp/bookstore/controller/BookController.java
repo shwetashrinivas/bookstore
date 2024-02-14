@@ -5,9 +5,6 @@ import com.idfc.bootcamp.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,16 +45,6 @@ public class BookController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No book found");
         }
         return ResponseEntity.ok(book);
-    }
-
-    @PostMapping("books/buy")
-    public BookOrder buyBooks(@RequestParam List<Long> bookIds) {
-        return bookService.buyBooks(bookIds);
-    }
-
-    @GetMapping("books/orders")
-    public List<BookOrder> viewPlacedOrders() {
-        return bookService.getAllOrders();
     }
 
 

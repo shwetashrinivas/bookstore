@@ -1,7 +1,6 @@
 package com.idfc.bootcamp.bookstore.controller;
 
 import com.idfc.bootcamp.bookstore.model.Book;
-import com.idfc.bootcamp.bookstore.model.BookOrder;
 import com.idfc.bootcamp.bookstore.repository.BookRepository;
 import com.idfc.bootcamp.bookstore.service.BookService;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +17,6 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest
@@ -133,21 +131,6 @@ public class BookControllerTest {
                 .andExpect(content().string("No book found"));
 
     }
-
-    @Test
-    @DisplayName("should buy books and return order")
-    void shouldBuyBooksAndReturnOrder() throws Exception {
-        BookOrder order = new BookOrder();
-        order.setId(1L);
-        List<Long> bookIds = Arrays.asList(1L);
-        when(bookService.buyBooks(bookIds)).thenReturn(order);
-
-        mockMvc.perform(post("/books/buy")
-                        .param("bookIds", "1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1));
-    }
-
 
 
 }

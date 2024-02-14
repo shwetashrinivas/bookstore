@@ -1,6 +1,7 @@
 package com.idfc.bootcamp.bookstore.controller;
 
 import com.idfc.bootcamp.bookstore.model.OrderBooks;
+import com.idfc.bootcamp.bookstore.service.OrderService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -18,6 +20,8 @@ public class OrderControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    private OrderService orderService;
 
     @Test
     @DisplayName("should get all orders")
@@ -28,7 +32,7 @@ public class OrderControllerTest {
         order2.setId(2L);
         List<OrderBooks> orders = Arrays.asList(order1, order2);
 
-        //Mockito.when(orderService.getAllOrders()).thenReturn(orders);
+        when(orderService.getAllOrders()).thenReturn(orders);
 
         mockMvc.perform(get("/orders"))
                 .andExpect(status().isOk())
