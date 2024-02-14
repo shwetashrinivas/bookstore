@@ -1,22 +1,20 @@
 package com.idfc.bootcamp.bookstore.controller;
 
 import com.idfc.bootcamp.bookstore.model.Book;
+import com.idfc.bootcamp.bookstore.repository.BookOrderRepository;
 import com.idfc.bootcamp.bookstore.repository.BookRepository;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -29,6 +27,9 @@ public class BookControllerTest {
 
     @MockBean
     BookRepository bookRepository;
+
+    @MockBean
+    BookOrderRepository bookOrderRepository;
 
     @Test
     @DisplayName("should return success http status")
@@ -121,7 +122,6 @@ public class BookControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isNotEmpty());
     }
-
     @Test
     @DisplayName("should return 204 with no book found when invalid id is passed")
     void shouldReturn204WithNoBookFoundWhenInvalidIdIsPassed() throws Exception {
@@ -131,5 +131,6 @@ public class BookControllerTest {
                 .andExpect(content().string("No book found"));
 
     }
+
 
 }
