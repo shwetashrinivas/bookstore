@@ -2,6 +2,7 @@ package com.idfc.bootcamp.bookstore.service;
 
 import com.idfc.bootcamp.bookstore.model.OrderBooks;
 import com.idfc.bootcamp.bookstore.repository.BookOrderRepository;
+import com.idfc.bootcamp.bookstore.repository.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class OrderServiceTest {
 
     @MockBean
     private BookOrderRepository bookOrderRepository;
+
+    @MockBean
+    BookRepository bookRepository;
 
     @BeforeEach
     void setUp() {

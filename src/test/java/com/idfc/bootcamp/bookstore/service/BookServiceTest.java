@@ -1,6 +1,7 @@
 package com.idfc.bootcamp.bookstore.service;
 
 import com.idfc.bootcamp.bookstore.model.Book;
+import com.idfc.bootcamp.bookstore.repository.BookOrderRepository;
 import com.idfc.bootcamp.bookstore.repository.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,6 +24,9 @@ public class BookServiceTest {
 
     @MockBean
     private BookRepository bookRepository;
+
+    @MockBean
+    private BookOrderRepository bookOrderRepository;
 
     @BeforeEach
     void setUp() {

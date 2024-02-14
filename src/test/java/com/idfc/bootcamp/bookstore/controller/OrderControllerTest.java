@@ -1,11 +1,14 @@
 package com.idfc.bootcamp.bookstore.controller;
 
 import com.idfc.bootcamp.bookstore.model.OrderBooks;
+import com.idfc.bootcamp.bookstore.repository.BookOrderRepository;
+import com.idfc.bootcamp.bookstore.repository.BookRepository;
 import com.idfc.bootcamp.bookstore.service.OrderService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
@@ -15,13 +18,20 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-@WebMvcTest(OrderController.class)
+@WebMvcTest
 public class OrderControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
+    @MockBean
     private OrderService orderService;
+
+    @MockBean
+    BookOrderRepository bookOrderRepository;
+
+    @MockBean
+    BookRepository bookRepository;
 
     @Test
     @DisplayName("should get all orders")

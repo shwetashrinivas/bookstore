@@ -1,8 +1,8 @@
 package com.idfc.bootcamp.bookstore.controller;
 
 import com.idfc.bootcamp.bookstore.model.Book;
+import com.idfc.bootcamp.bookstore.repository.BookOrderRepository;
 import com.idfc.bootcamp.bookstore.repository.BookRepository;
-import com.idfc.bootcamp.bookstore.service.BookService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class BookControllerTest {
     BookRepository bookRepository;
 
     @MockBean
-    BookService bookService;
+    BookOrderRepository bookOrderRepository;
 
     @Test
     @DisplayName("should return success http status")
