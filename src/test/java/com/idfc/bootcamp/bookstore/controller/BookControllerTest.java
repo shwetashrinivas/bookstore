@@ -1,24 +1,24 @@
 package com.idfc.bootcamp.bookstore.controller;
 
 import com.idfc.bootcamp.bookstore.model.Book;
+import com.idfc.bootcamp.bookstore.model.BookOrder;
 import com.idfc.bootcamp.bookstore.repository.BookRepository;
-import org.junit.jupiter.api.Assertions;
+import com.idfc.bootcamp.bookstore.service.BookService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest
@@ -29,6 +29,9 @@ public class BookControllerTest {
 
     @MockBean
     BookRepository bookRepository;
+
+    @MockBean
+    BookService bookService;
 
     @Test
     @DisplayName("should return success http status")
@@ -121,7 +124,6 @@ public class BookControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isNotEmpty());
     }
-
     @Test
     @DisplayName("should return 204 with no book found when invalid id is passed")
     void shouldReturn204WithNoBookFoundWhenInvalidIdIsPassed() throws Exception {
@@ -131,5 +133,21 @@ public class BookControllerTest {
                 .andExpect(content().string("No book found"));
 
     }
+
+    @Test
+    @DisplayName("should buy books and return order")
+    void shouldBuyBooksAndReturnOrder() throws Exception {
+        BookOrder order = new BookOrder();
+        order.setId(1L);
+        List<Long> bookIds = Arrays.asList(1L);
+        when(bookService.buyBooks(bookIds)).thenReturn(order);
+
+        mockMvc.perform(post("/books/buy")
+                        .param("bookIds", "1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(1));
+    }
+
+
 
 }
