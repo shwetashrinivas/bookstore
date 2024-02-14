@@ -6,10 +6,7 @@ import com.idfc.bootcamp.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -48,8 +45,12 @@ public class BookController {
         return ResponseEntity.ok(book);
     }
 
+    @PostMapping("books/buy")
+    public BookOrder buyBooks(@RequestParam List<Long> bookIds) {
+        return bookService.buyBooks(bookIds);
+    }
 
-    @GetMapping("/orders")
+    @GetMapping("books/orders")
     public List<BookOrder> viewPlacedOrders() {
         return bookService.getAllOrders();
     }
