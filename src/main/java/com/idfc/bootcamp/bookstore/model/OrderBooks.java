@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class BookOrder {
+public class OrderBooks {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

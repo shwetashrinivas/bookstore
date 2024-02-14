@@ -9,7 +9,7 @@ public class OrderItem {
     private Long id;
 
     @ManyToOne
-    private BookOrder order;
+    private OrderBooks order;
 
     @ManyToOne
     private Book book;
@@ -24,11 +24,11 @@ public class OrderItem {
         this.id = id;
     }
 
-    public BookOrder getOrder() {
+    public OrderBooks getOrder() {
         return order;
     }
 
-    public void setOrder(BookOrder order) {
+    public void setOrder(OrderBooks order) {
         this.order = order;
     }
 
