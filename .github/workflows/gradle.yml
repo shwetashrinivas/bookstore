@@ -93,6 +93,7 @@ jobs:
         with:
           node-version: 18.12.1
           cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
       - name: compile with Gradle
         uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
         with:
