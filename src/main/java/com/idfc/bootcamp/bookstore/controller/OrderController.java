@@ -19,7 +19,7 @@ public class OrderController {
     }
 
     @PostMapping("/buy")
-    public OrderBooks buyBooks(@RequestParam List<Long> bookIds) {
+    public OrderBooks buyBooks(@RequestBody List<Long> bookIds) {
         return orderService.buyBooks(bookIds);
     }
 

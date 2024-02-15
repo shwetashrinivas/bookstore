@@ -4,15 +4,18 @@ import com.idfc.bootcamp.bookstore.model.OrderBooks;
 import com.idfc.bootcamp.bookstore.repository.BookOrderRepository;
 import com.idfc.bootcamp.bookstore.repository.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @WebMvcTest
@@ -45,4 +48,15 @@ public class OrderServiceTest {
         assertEquals(1L, orders.get(0).getId());
         assertEquals(2L, orders.get(1).getId());
     }
-}
+
+    @Test
+    @DisplayName("should throw IllegalArgumentException when buying books with empty bookIds")
+    void shouldThrowIllegalArgumentExceptionWhenBuyingBooksWithEmptyBookIds() {
+        List<Long> emptyBookIds = Collections.emptyList();
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            orderService.buyBooks(emptyBookIds);
+        });
+        assertEquals("List of book IDs is empty", exception.getMessage());
+    }
+
+    }
