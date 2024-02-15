@@ -23,6 +23,10 @@ public class OrderService {
     }
 
     public OrderBooks buyBooks(List<Long> bookIds) {
+        if (bookIds == null || bookIds.isEmpty()) {
+            throw new IllegalArgumentException("List of book IDs is empty");
+        }
+
         OrderBooks bookOrder = new OrderBooks();
         List<OrderItem> orderItems = new ArrayList<>();
         for (Long bookId : bookIds) {
