@@ -1,5 +1,8 @@
 .shopping-cart{
+    justify-content: center;
+    display: flex;
     padding-top: 90px;
+    padding-bottom: 100px;
 }
 
 .shopping-cart-header{
@@ -12,5 +15,8 @@
 }
 .cart-summary{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+}
+.sub-container{
+    width: 50%;
 }

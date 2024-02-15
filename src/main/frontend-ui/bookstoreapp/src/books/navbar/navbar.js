@@ -10,7 +10,7 @@ export default function navbar() {
         <Link to="/" className="link">
           <span className="home">Phantom Book Store</span>
         </Link>
-        <Link to="/about" className="link cart">
+        <Link to="/cart" className="link cart">
           <IoIosCart size={26} color="#2286Be" />
         </Link>
       </div>

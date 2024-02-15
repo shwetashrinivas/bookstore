@@ -1,8 +1,6 @@
 .shopping-cart-container{
-    margin-left: 50px;
-    margin-right: 50px;
-    width: 60%;
     background: white;
+    margin-bottom: 30px;
 }
 .cart-img{
     display: flex;
@@ -11,7 +9,7 @@
 .cart{
     display: flex;
     flex-direction: row;
-    margin-top: 20px;
+    padding: 15px;
     justify-content: space-between;
 }
 .shopping-cart-header{
@@ -30,6 +28,7 @@
     margin-left: 30px;
 }
 .price{
+    margin-top: 5px;
     display: flex;
 }
 .author{
@@ -42,4 +41,21 @@
     height: 1px;
     background-color: rgb(186, 180, 180);
     border: none;
+}
+.increment-Count {
+    margin-left: 50px;
+    font-family: sans-serif;
+    text-align: center;
+    width: fit-content;
+    flex-direction: row;
+    display: flex;
   }
+
+  .Count{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .btn{
+    height: 25px;
+  }
+  
