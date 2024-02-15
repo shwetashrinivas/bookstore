@@ -3,11 +3,12 @@ package com.idfc.bootcamp.bookstore.controller;
 import com.idfc.bootcamp.bookstore.model.OrderBooks;
 import com.idfc.bootcamp.bookstore.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/orders")
@@ -21,18 +22,20 @@ public class OrderController {
     }
 
     @PostMapping("/buy")
-    public ResponseEntity<OrderBooks> buyBooks(@RequestBody List<Long> bookIds) {
+    public ResponseEntity<Map<String, String>> buyBooks(@RequestBody List<Long> bookIds) {
+        Map<String, String> response = new HashMap<>();
         try {
-            OrderBooks orderBooks = orderService.buyBooks(bookIds);
-            return new ResponseEntity<>(orderBooks, HttpStatus.OK);
+            orderService.buyBooks(bookIds);
+            response.put("message", "Books purchased successfully");
+            return ResponseEntity.ok(response);
         } catch (IllegalArgumentException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            response.put("error", e.getMessage());
+            return ResponseEntity.badRequest().body(response);
         }
     }
+
     @GetMapping
     public List<OrderBooks> getAllOrders() {
         return orderService.getAllOrders();
     }
-
-
 }
