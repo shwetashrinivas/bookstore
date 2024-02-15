@@ -19,8 +19,16 @@ public class OrderController {
     }
 
     @PostMapping("/buy")
-    public OrderBooks buyBooks(@RequestBody List<Long> bookIds) {
-        return orderService.buyBooks(bookIds);
+    public ResponseEntity<Map<String, String>> buyBooks(@RequestBody List<Long> bookIds) {
+        Map<String, String> response = new HashMap<>();
+        try {
+            orderService.buyBooks(bookIds);
+            response.put("message", "Books purchased successfully");
+            return ResponseEntity.ok(response);
+        } catch (IllegalArgumentException e) {
+            response.put("error", e.getMessage());
+            return ResponseEntity.badRequest().body(response);
+        }
     }
 
     @GetMapping
