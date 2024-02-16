@@ -18,7 +18,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <div className="background">
+      <div>
         <Routes>
           <Route path="/" element={<MainComponent />} />
           <Route path="/cart" element={<Shopcart />} />

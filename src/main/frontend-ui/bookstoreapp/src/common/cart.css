@@ -1,8 +1,4 @@
-.shopping-cart-container{
-    background: white;
-    margin-bottom: 30px;
-}
-.cart-img{
+.cart-container{
     display: flex;
     flex-direction: row;
 }
@@ -11,6 +7,7 @@
     flex-direction: row;
     padding: 15px;
     justify-content: space-between;
+    box-shadow: 1px 0px 19px -3px rgba(0,0,0,0.1);
 }
 .shopping-cart-header{
     display: flex;
@@ -28,7 +25,7 @@
     margin-left: 30px;
 }
 .price{
-    margin-top: 5px;
+    margin-top: 8px;
     display: flex;
 }
 .author{
@@ -43,19 +40,24 @@
     border: none;
 }
 .increment-Count {
-    margin-left: 50px;
     font-family: sans-serif;
-    text-align: center;
-    width: fit-content;
     flex-direction: row;
     display: flex;
   }
 
   .Count{
-    margin-left: 5px;
-    margin-right: 5px;
+    padding: 5px;
   }
   .btn{
+    display: contents;
+    width: 25px;
     height: 25px;
+  }
+  .details{
+    flex-direction: row;
+    display: flex;
+  }
+  .stars{
+    margin-top: 8px;
   }
   

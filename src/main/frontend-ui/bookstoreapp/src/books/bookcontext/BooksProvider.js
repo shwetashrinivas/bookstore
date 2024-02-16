@@ -8,6 +8,8 @@ const BooksProvider = ({ children }) => {
     books: [],
   });
 
+  const [cartItems, setCartItems] = useState([]);
+
   useEffect(() => {
     const getBooks = async () => await axios.get("http://localhost:8090/books");
     getBooks()
@@ -22,6 +24,8 @@ const BooksProvider = ({ children }) => {
       value={{
         setBooks,
         books,
+        cartItems,
+        setCartItems,
       }}
     >
       {children}

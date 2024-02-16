@@ -1,8 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./book.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { BooksContext } from "../books/bookcontext/BooksProvider.js";
 
 export default function Book({ book }) {
+  const navigate = useNavigate();
+  const { cartItems, setCartItems } = useContext(BooksContext);
+
+  const updateCart = () => {
+    if (cartItems?.length) {
+      const obj = cartItems?.find((b) => b?.id === book?.id);
+      if (obj?.id) {
+        let a = [];
+        for (var item = 0; item < cartItems?.length; item++) {
+          if (cartItems[item]?.id === obj?.id) {
+            console.log();
+            a.push({
+              ...cartItems[item],
+              bookCount: cartItems[item]?.bookCount + 1,
+            });
+          } else {
+            a.push(cartItems[item]);
+          }
+        }
+        setCartItems([...a]);
+      } else {
+        setCartItems((prev) => [...prev, { ...book, bookCount: 1 }]);
+      }
+    } else {
+      setCartItems((prev) => [...prev, { ...book, bookCount: 1 }]);
+    }
+    navigate("/cart");
+  };
+
   return (
     <div className="book-component" data-testid="book">
       <img
@@ -16,14 +46,20 @@ export default function Book({ book }) {
         {book?.title}
       </p>
       <p className="author" data-testid="author">
-        by ${book?.author}
+        by {book?.author}
       </p>
       <p className="price" data-testid="price">
-        RS ${book?.price}
+        ₹ {book?.price}
       </p>
-      <Link data-testid="add-to-card" className="button-style" to="/cart">
+      <button
+        data-testid="add-to-card"
+        className="button-style"
+        onClick={() => {
+          updateCart();
+        }}
+      >
         Add to cart
-      </Link>
+      </button>
     </div>
   );
 }
