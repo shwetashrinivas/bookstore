@@ -1,0 +1,33 @@
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.orderrecieved{
+    font-weight: 900;
+    font-family: fangsong;
+    font-size: 30px;
+    margin:0px;
+}
+.imgstyle{
+    margin-bottom:10px;
+    display: flex;
+    justify-content: center;
+}
+.purchase-msg{
+    display: flex;
+    font-size: 18px;
+    font-weight: 500;
+    justify-content: center;
+}
+.continue-shopping{
+    width: 180px;
+    height: 40px;
+    background-color: orange;
+    border: none;
+    border-radius: 20px;
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+}

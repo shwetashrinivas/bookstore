@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
 import "./summary.css";
+import axios from "axios";
 import { BooksContext } from "../books/bookcontext/BooksProvider.js";
 
-export default function Summary() {
+export default function Summary({ setIsModal }) {
   const { cartItems } = useContext(BooksContext);
   const items = [];
+  const ids = [];
   let finalPrice = 0;
   for (const book of cartItems) {
+    ids.push(book?.id);
     finalPrice = finalPrice + book?.bookCount * book?.price;
     items.push(
       <tr key={book?.id}>
@@ -16,6 +19,16 @@ export default function Summary() {
       </tr>
     );
   }
+  const buyBooks = () => {
+    axios
+      .post("http://localhost:8090/orders/buy", [10])
+      .then((response) => {
+        if (true) {
+          setIsModal(true);
+        }
+      })
+      .catch(() => {});
+  };
   return (
     <div className="summary">
       <span className="summary-text">Summary</span>
@@ -39,7 +52,14 @@ export default function Summary() {
       )}
       <sapn className="value">Total order value: ₹ {finalPrice}</sapn>
       <div className="button-container">
-        <button className="button">Proceed to buy</button>
+        <button
+          className="button"
+          onClick={() => {
+            buyBooks();
+          }}
+        >
+          Proceed to buy
+        </button>
       </div>
     </div>
   );
