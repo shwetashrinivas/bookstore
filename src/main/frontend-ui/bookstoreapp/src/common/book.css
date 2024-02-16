@@ -29,6 +29,7 @@
 .price{
     font-size: 16px;
     font-weight: 600;
+    justify-content: center;
 }
 .button-style{
     width: 130px;
@@ -41,4 +42,12 @@
     background-color: aqua;
     background-color: #ffe802;
     line-height: 28px;
+}
+
+.book-style{
+    text-decoration: none;
+}
+
+.book-style-div{
+    height: 350px;
 }

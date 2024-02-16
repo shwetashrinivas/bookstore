@@ -14,7 +14,6 @@ export default function Book({ book }) {
         let a = [];
         for (var item = 0; item < cartItems?.length; item++) {
           if (cartItems[item]?.id === obj?.id) {
-            console.log();
             a.push({
               ...cartItems[item],
               bookCount: cartItems[item]?.bookCount + 1,
@@ -33,24 +32,30 @@ export default function Book({ book }) {
     navigate("/cart");
   };
 
+  const goToBookDetails = () => {
+    navigate("/bookDetails", { state: { id: book?.id } });
+  };
+
   return (
     <div className="book-component" data-testid="book">
-      <img
-        data-testid="coverImageUrl"
-        src={`https://res.cloudinary.com/www-thepencilapp-com/image/upload/q_auto,f_auto/books/covers/${book?.coverImageUrl}`}
-        alt="abc"
-        height={240}
-        width={180}
-      />
-      <p className="title" data-testid="title">
-        {book?.title}
-      </p>
-      <p className="author" data-testid="author">
-        by {book?.author}
-      </p>
-      <p className="price" data-testid="price">
-        ₹ {book?.price}
-      </p>
+      <div className="book-style-div" onClick={goToBookDetails}>
+        <img
+          data-testid="coverImageUrl"
+          src={`https://res.cloudinary.com/www-thepencilapp-com/image/upload/q_auto,f_auto/books/covers/${book?.coverImageUrl}`}
+          alt="abc"
+          height={240}
+          width={180}
+        />
+        <p className="title" data-testid="title">
+          {book?.title}
+        </p>
+        <p className="author" data-testid="author">
+          by {book?.author}
+        </p>
+        <p className="price" data-testid="price">
+          ₹ {book?.price}
+        </p>
+      </div>
       <button
         data-testid="add-to-card"
         className="button-style"

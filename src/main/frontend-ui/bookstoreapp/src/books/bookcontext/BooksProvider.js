@@ -9,6 +9,7 @@ const BooksProvider = ({ children }) => {
   });
 
   const [cartItems, setCartItems] = useState([]);
+  const [bookDetails,setBookDetails] = useState({});
 
   useEffect(() => {
     const getBooks = async () => await axios.get("http://localhost:8090/books");
@@ -26,6 +27,8 @@ const BooksProvider = ({ children }) => {
         books,
         cartItems,
         setCartItems,
+        bookDetails,
+        setBookDetails,
       }}
     >
       {children}

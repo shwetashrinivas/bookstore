@@ -4,6 +4,7 @@ import BookList from "./books/BookList.js";
 import Search from "./books/searchbar/search.js";
 import Navbar from "./books/navbar/navbar.js";
 import Shopcart from "./books/cart/shopcart.js";
+import BookDetails from "./books/bookDetails/bookDetails.js";
 
 function MainComponent() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainComponent />} />
           <Route path="/cart" element={<Shopcart />} />
+          <Route path="/bookDetails" element={<BookDetails />} />
           <Route path="*" element={<MainComponent />} />
         </Routes>
       </div>

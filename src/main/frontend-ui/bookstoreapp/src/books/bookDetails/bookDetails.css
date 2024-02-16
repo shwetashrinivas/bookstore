@@ -1,0 +1,84 @@
+.BookDetails-container{
+  display: flex;
+  justify-content: center;
+}
+
+.cart-img{
+    margin-left: 20px;
+}
+
+.BookDetails-cart{
+    display: flex;
+    flex-direction: row;
+    margin-top: 90px;
+    background-color: white;
+    width: 60%;
+    border-radius: 10px;
+    margin-bottom: 120px;
+    box-shadow: 1px 0px 19px -3px rgba(0,0,0,0.1)
+}
+
+.Book-details{
+    display: flex;
+    width: 77%;
+    justify-content: flex-start;
+    flex-direction: column;
+    text-align: start;
+    margin-top: 40px;
+    margin-left: 40px 
+}
+.price{
+    display: flex;
+    align-items: center;
+}
+
+  .book-title{
+    font-size: 30px;
+    font-weight: 500;
+  }
+  .book-author{
+    font-size: small;
+    font-weight: 100;
+  }
+
+  .description{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: cursive;
+    margin-right: 20px 
+  }
+
+  .rating{
+    font-size: medium;
+    font-weight: 200;
+  }
+
+  .book-price{
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: 200;
+    margin-bottom: 70px;
+  }
+
+  .button-details-style{
+    margin-bottom: 20px;
+    width: 500px;
+    height: 30px;
+    border-radius: 15px;
+    border: 0;
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #ffe802;
+    line-height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: medium;
+    font-weight: 400;
+    font-family: fangsong;
+    color: black;
+}
+.buy-now-button{
+    background-color: #c8b808;
+}
